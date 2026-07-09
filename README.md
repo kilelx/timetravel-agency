@@ -2,6 +2,9 @@
 
 Site vitrine d'une agence de voyages temporels de luxe. Trois destinations exclusives — **Paris 1889**, le **Crétacé**, la **Florence de 1504** — un quiz de recommandation, et un concierge IA propulsé par Google Gemini.
 
+🔗 **Préprod** : [timetravel-agency-sigma.vercel.app](https://timetravel-agency-sigma.vercel.app)
+📦 **Repo** : [github.com/kilelx/timetravel-agency](https://github.com/kilelx/timetravel-agency)
+
 ---
 
 ## Stack
@@ -53,9 +56,6 @@ Ouvrir [http://localhost:3000](http://localhost:3000).
 | Clé | Requis | Défaut | Rôle |
 |---|---|---|---|
 | `GEMINI_API_KEY` | ✅ | — | Clé API Google Gemini (côté serveur, jamais exposée au client) |
-| `GEMINI_MODEL` | ❌ | `gemini-2.5-flash` | Modèle Gemini utilisé par le chatbot |
-
-Définies dans `.env.local` (non commité — voir `.gitignore`). Modèle d'exemple : `.env.local.example`.
 
 ---
 
