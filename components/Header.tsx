@@ -22,6 +22,9 @@ export default function Header() {
           >
             Destinations
           </Link>
+          <Link href="/quiz" className="hover:text-foreground transition-colors">
+            Quiz
+          </Link>
           <Link href="/#agence" className="hover:text-foreground transition-colors">
             L&apos;Agence
           </Link>
