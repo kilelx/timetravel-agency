@@ -1,65 +1,95 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import DestinationCard from "@/components/DestinationCard";
+import CTAButton from "@/components/CTAButton";
+import { destinations } from "@/lib/destinations";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <Hero />
+
+      {/* Présentation agence */}
+      <section id="agence" className="mx-auto max-w-7xl px-6 py-28 md:py-40">
+        <div className="grid gap-16 md:grid-cols-2 md:items-center">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">
+              L&apos;Agence
+            </p>
+            <h2 className="mt-6 font-display text-4xl md:text-6xl leading-tight">
+              Une conciergerie
+              <span className="italic text-gold"> hors du temps</span>.
+            </h2>
+            <p className="mt-8 text-lg text-foreground/75 leading-relaxed">
+              Fondée dans un futur que nous préférons taire, TimeTravel Agency
+              orchestre des voyages temporels d&apos;un raffinement absolu. Nos
+              agents temporels sélectionnent chaque époque, sécurisent chaque
+              instant et veillent à ce que votre passage dans l&apos;Histoire
+              soit aussi discret qu&apos;inoubliable.
+            </p>
+            <p className="mt-4 text-lg text-foreground/75 leading-relaxed">
+              Trois destinations. Un service sur mesure. Aucune trace.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { k: "3", v: "Époques d'exception" },
+              { k: "∞", v: "Souvenirs" },
+              { k: "0", v: "Paradoxe garanti" },
+              { k: "24/7", v: "Conciergerie temporelle" },
+              { k: "100%", v: "Sur mesure" },
+              { k: "1", v: "Vie à sublimer" },
+            ].map((s) => (
+              <div
+                key={s.v}
+                className="rounded-xl border border-border bg-surface p-6 text-center"
+              >
+                <div className="font-display text-3xl text-gold">{s.k}</div>
+                <div className="mt-2 text-xs text-muted">{s.v}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Aperçu destinations */}
+      <section className="mx-auto max-w-7xl px-6 pb-28 md:pb-40">
+        <div className="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold-soft">
+              Destinations
+            </p>
+            <h2 className="mt-4 font-display text-4xl md:text-6xl">
+              Choisissez votre siècle
+            </h2>
+          </div>
+          <CTAButton href="/destinations" variant="ghost">
+            Toutes les destinations
+          </CTAButton>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {destinations.map((d) => (
+            <DestinationCard key={d.slug} dest={d} />
+          ))}
+        </div>
+      </section>
+
+      {/* CTA final */}
+      <section className="relative border-t border-border bg-surface">
+        <div className="mx-auto max-w-4xl px-6 py-28 text-center">
+          <h2 className="font-display text-4xl md:text-6xl leading-tight">
+            Le passé n&apos;attend que <span className="italic text-gold">vous</span>.
+          </h2>
+          <p className="mt-6 text-lg text-foreground/75">
+            Réservez une consultation privée avec l&apos;un de nos agents
+            temporels.
           </p>
+          <div className="mt-10 flex justify-center">
+            <CTAButton href="/destinations">Commencer le voyage</CTAButton>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
